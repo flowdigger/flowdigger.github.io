@@ -1,21 +1,23 @@
 # Flowdigger Documentation
 
-Flowdigger docs focus first on semantic lineage and XIR foundation material migrated from `jurgenei`.
+Use this site to understand, derive, and validate data lineage in legacy systems.
 
-## Primary tracks
+## Start by role
 
-- **Lineage**: architecture, derivation, governance, DTAP metadata workflow, and paper series.
-- **XIR foundation**: language definition, quick reference, implementation specification, and structural model.
-- **Related papers**: adjacent research and architecture papers supporting lineage strategy.
+- **Developer**: go to [Developer path](role-paths/developer.md).
+- **Business analyst**: go to [Business analyst path](role-paths/business-analyst.md).
+- **Manager**: go to [Manager path](role-paths/manager.md).
+- **Learner**: go to [Learner path](role-paths/learner.md).
 
-## Scope of this rollout
+## Start by goal
 
-Phase 1 covers lineage-first migration and MkDocs baseline setup:
+- Learn basic terms: [Data lineage in legacy systems](core-concepts/data-lineage-basics.md).
+- Build first result: [Build first lineage slice](how-to/build-first-lineage-slice.md).
+- Check quality: [Validate lineage quality](how-to/validate-lineage-quality.md).
+- Understand method: [Derivation lifecycle](core-concepts/derivation-lifecycle.md).
 
-- MkDocs Material configuration
-- Structured navigation
-- Local build and serve workflow
-- GitHub Pages deployment pipeline
+## Reading model
 
-For source-to-target mapping of migrated pages, see [Lineage migration map](lineage/migration-map.md).
+Each page tries to be a standalone unit. Each page states purpose, audience, and output.
 
+If you read one page only, you still get clear next steps.

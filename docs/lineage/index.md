@@ -1,19 +1,34 @@
-# Lineage Documentation
+# Lineage Architecture Map
 
-Lineage track captures architecture, derivation language, and evidence-driven governance across software delivery lifecycle.
+## Purpose
 
-## Included topics
+Show how Flowdigger derives lineage from real system evidence.
 
-- Universal semantic lineage architecture
-- Continuous architecture reconciliation
-- Extract/derive/resolve/publish model
-- SEL derivation language and roadmap
-- Collibra and governance mapping
-- DTAP metadata workbench paper set
+## Audience
 
-## Migration notes
+Developers, business analysts, managers, and learners.
 
-This section is migration-first: content reorganized for stable docs navigation while preserving source intent.
+## Core idea
 
-Use [migration map](migration-map.md) to trace source paths from `jurgenei` to this site.
+Do not maintain lineage by hand when system facts can be derived from code, configuration, and runtime signals.
 
+## End-to-end flow
+
+```mermaid
+flowchart TD
+    A[Collect evidence from legacy system] --> B[Normalize to intermediate representation]
+    B --> C[Derive lineage facts]
+    C --> D[Validate quality and completeness]
+    D --> E[Publish views for teams and governance]
+```
+
+## Use this section
+
+- Need architecture detail: read [Universal Semantic Lineage Architecture](../Universal_Semantic_Lineage_Architecture.md).
+- Need reconciliation detail: read [Continuous Architecture Reconciliation](../continuous-architecture-reconcilliation.md).
+- Need lifecycle detail: read [Derivation lifecycle](../core-concepts/derivation-lifecycle.md).
+
+## Related
+
+- [Migration map](migration-map.md)
+- [Evidence model](../core-concepts/evidence-model.md)
