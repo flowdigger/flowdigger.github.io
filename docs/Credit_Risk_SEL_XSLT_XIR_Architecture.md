@@ -1,4 +1,4 @@
-# Credit Risk Architecture: SEL, XSLT, XIR
+# Credit Risk Example: SEL, XSLT, XIR
 
 ## Vision
 

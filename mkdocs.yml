@@ -68,7 +68,7 @@ nav:
           - Continuous Architecture Reconciliation: continuous-architecture-reconcilliation.md
           - Extract, Derive, Resolve, Publish: Extract-Derive-Resolve-Publish-Paper.md
           - SEL Derivation Language: SEL-Derivation-Language.md
-          - Credit Risk Architecture: Credit_Risk_SEL_XSLT_XIR_Architecture.md
+          - Credit Risk Example: Credit_Risk_SEL_XSLT_XIR_Architecture.md
           - Observation-Driven Ontology Alignment: Observation-Driven_Ontology_Alignment.md
           - ShaclXslt + SEL Roadmap: ShaclXsltSel-Roadmap.md
           - XIR-GOV Federation: XIR-GOV-Evidence-Oriented-Enterprise-Knowledge-Graph-Federation.md
