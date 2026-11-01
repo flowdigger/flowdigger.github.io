@@ -1,0 +1,87 @@
+site_name: Flowdigger Lineage Docs
+site_description: Semantic lineage and XIR documentation for flowdigger
+site_url: https://flowdigger.github.io/
+repo_url: https://github.com/flowdigger/flowdigger.github.io
+repo_name: flowdigger/flowdigger.github.io
+edit_uri: ""
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+plugins:
+  - search
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - tables
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+  - Start Here:
+      - Introduction: start-here/index.md
+      - Data Lineage in Legacy Systems: core-concepts/data-lineage-basics.md
+      - Storyline and Learning Path: core-concepts/storyline.md
+  - Role Paths:
+      - Developer path: role-paths/developer.md
+      - Business analyst path: role-paths/business-analyst.md
+      - Manager path: role-paths/manager.md
+      - Learner path: role-paths/learner.md
+  - How-To Playbooks:
+      - Build first lineage slice: how-to/build-first-lineage-slice.md
+      - Validate lineage quality: how-to/validate-lineage-quality.md
+  - Core Concepts:
+      - Evidence model: core-concepts/evidence-model.md
+      - Derivation lifecycle: core-concepts/derivation-lifecycle.md
+      - Lineage architecture map: lineage/index.md
+  - Reference:
+      - Glossary and acronyms: reference/glossary.md
+      - Migration map: lineage/migration-map.md
+      - Canonical IR Specification (Draft): design/plsql-lineage-architecture-docs/02-canonical-ir-spec.md
+      - XIR Foundation:
+          - Starter Kit: xir-starter-kit/README.md
+          - XIR Quick Reference: xir-starter-kit/spec/XIR-QUICK-REFERENCE.md
+          - XIR Language Definition: xir-starter-kit/spec/XIR-LANGUAGE.md
+          - XIR Implementation Spec: XIR-Implementation-Spec.md
+          - XIR Structural Model: XIR_Structural_Model_Paper.md
+          - ANTLR G4 to AST Classes: ANTLR_G4_to_AST_Classes_Spec.md
+          - XIR W3C Positioning (Merged): XIR_W3C_Merged_Paper.md
+          - XIR W3C Positioning (Draft): XIR_W3C_Positioning_Note.md
+          - XIR 30-Year Journey: XIR-30-year-journey.md
+      - Source papers:
+          - Universal Semantic Lineage Architecture: Universal_Semantic_Lineage_Architecture.md
+          - Continuous Architecture Reconciliation: continuous-architecture-reconcilliation.md
+          - Extract, Derive, Resolve, Publish: Extract-Derive-Resolve-Publish-Paper.md
+          - SEL Derivation Language: SEL-Derivation-Language.md
+          - Credit Risk Example: Credit_Risk_SEL_XSLT_XIR_Architecture.md
+          - Observation-Driven Ontology Alignment: Observation-Driven_Ontology_Alignment.md
+          - ShaclXslt + SEL Roadmap: ShaclXsltSel-Roadmap.md
+          - XIR-GOV Federation: XIR-GOV-Evidence-Oriented-Enterprise-Knowledge-Graph-Federation.md
+          - RDF/SKOS/Collibra Mapping: RDF_SKOS_Collibra_Mapping.md
+          - Executable Architecture to Enterprise Behavior Graphs: Executable-Architecture-Enterprise-Behavior-Graphs.md
+          - XIR vs CAST: XIR_vs_CAST_Paper.md
+          - Noema and XIR: Noema_XIR_Whitepaper.md
+          - GIR / Schematron / AI Semantics Draft: GIR_AI_Model_Draft.md
+      - Metadata lineage paper series:
+          - Overview: xir-metadata-lineage-papers/README.md
+          - 01 - XML in Age of AI: xir-metadata-lineage-papers/01-xir-xml-in-the-age-of-ai.md
+          - 02 - Metadata as Build Product: xir-metadata-lineage-papers/02-metadata-as-a-build-product.md
+          - 03 - Lineage to Reprojection: xir-metadata-lineage-papers/03-from-lineage-to-reprojection.md
+          - 04 - Metadata Workbench DTAP: xir-metadata-lineage-papers/04-fast-metadata-workbench-dtap-analysis.md
+  - Case Stories:
+      - Legacy system lineage story: case-stories/legacy-system-lineage-story.md
