@@ -77,6 +77,7 @@ nav:
           - XIR vs CAST: XIR_vs_CAST_Paper.md
           - Noema and XIR: Noema_XIR_Whitepaper.md
           - GIR / Schematron / AI Semantics Draft: GIR_AI_Model_Draft.md
+          - Flowdigger Deterministic Knowledge Derivation: flowdigger-deterministic-knowledge-derivation.md
       - Metadata lineage paper series:
           - Overview: xir-metadata-lineage-papers/README.md
           - 01 - XML in Age of AI: xir-metadata-lineage-papers/01-xir-xml-in-the-age-of-ai.md
