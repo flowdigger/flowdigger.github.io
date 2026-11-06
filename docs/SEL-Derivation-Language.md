@@ -162,7 +162,7 @@ SEL annotations are carried on Schematron rule assertions/reports.
 Implementations **MUST** use SEL namespace:
 
 ```xml
-xmlns:sel="http://jurgenei.name/sel"
+xmlns:sel="http://flowdigger.org/sel"
 ```
 
 ### 7.2 Supported SEL attributes
@@ -286,7 +286,7 @@ Rule:
 ```xml
 <sch:rule context="src:Customer"
           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-          xmlns:sel="http://jurgenei.name/sel"
+          xmlns:sel="http://flowdigger.org/sel"
           xmlns:src="urn:src">
   <sch:report test="src:Name"
               sel:emit="true"
