@@ -4,7 +4,7 @@
 
 Legacy software contains more knowledge than its documentation normally records. Architecture models describe intended structure, source code contains implementation structure, configuration connects components, SQL expresses data movement, and build files describe how these parts are assembled. The problem is not only to collect this material. The problem is to derive a coherent, traceable, and reproducible interpretation from it.
 
-[Flowdigger](https://flowdigger.github.io/) approaches this as **deterministic knowledge derivation**. Authoritative source artifacts remain the evidence. A staged pipeline parses, observes, relates, validates, merges, stitches, exports, and publishes derived knowledge. The pipeline originated in a working lineage implementation and was separated from Vortex-specific knowledge so that reusable machinery could become open source while organization-specific interpretation remained private.
+[Flowdigger](https://flowdigger.github.io/) approaches this as **deterministic knowledge derivation**. Authoritative source artifacts remain the evidence. A staged pipeline parses, observes, relates, validates, merges, stitches, exports, and publishes derived knowledge. The pipeline originated in a working lineage implementation and was separated from Application-specific knowledge so that reusable machinery could become open source while organization-specific interpretation remained private.
 
 A central mechanism is **transformation injection**. Pipeline stages have default behavior, but additional transformations can enrich them with domain-specific interpretation. These transformations can introduce and interpret namespaced vocabularies, for example to map metadata on [ArchiMate](https://www.opengroup.org/archimate-forum/archimate-overview) Application Components to source code, configuration, and database artifacts.
 
@@ -49,7 +49,7 @@ For example, an architecture model can identify an Application Component, config
 
 ## 2. From a working lineage pipeline to reusable machinery
 
-Flowdigger did not start as an abstract framework design. It came from a working lineage pipeline. The practical requirement was to remove reusable implementation machinery from Vortex without open-sourcing Vortex-specific knowledge.
+Flowdigger did not start as an abstract framework design. It came from a working lineage pipeline. The practical requirement was to remove reusable implementation machinery from Application without open-sourcing Application-specific knowledge.
 
 That extraction exposed nine stable processing phases:
 
@@ -121,7 +121,7 @@ This is why **knowledge derivation** is more precise than **projection**. Projec
 
 ## 4. Transformation injection
 
-Separating reusable machinery from Vortex-specific interpretation creates a requirement: the public pipeline must permit additional domain knowledge without embedding that knowledge in its core.
+Separating reusable machinery from Application-specific interpretation creates a requirement: the public pipeline must permit additional domain knowledge without embedding that knowledge in its core.
 
 This leads to **transformation injection**.
 
@@ -149,7 +149,7 @@ Transformation injection supplies explicit interpretation:
 artifact <- transformation <- domain knowledge
 ```
 
-A private Vortex transformation can therefore participate at a stable public Flowdigger stage without becoming part of the open-source implementation.
+A private Application transformation can therefore participate at a stable public Flowdigger stage without becoming part of the open-source implementation.
 
 The mechanism can support several composition semantics if they become necessary:
 
@@ -170,7 +170,7 @@ For example:
 ```text
 flow:*    generic lineage concepts
 archi:*   architecture concepts
-vortex:*  Vortex-specific concepts
+app:*     application-specific concepts
 ```
 
 The Flowdigger core does not need to understand every private concept. A domain transformation can understand the external or private vocabulary and produce facts in the vocabulary expected by a later stage.
@@ -583,7 +583,7 @@ Three terms have distinct roles:
 
 Flowdigger is best understood not as a metadata repository and not merely as a collection of Gradle plugins. It is an **opinionated deterministic knowledge-derivation pipeline for software systems**.
 
-Its stages emerged from a working lineage implementation. Separating reusable machinery from Vortex-specific knowledge exposed a durable architecture: generic processing can remain open, while domain-specific interpretation can be injected as transformations.
+Its stages emerged from a working lineage implementation. Separating reusable machinery from Application-specific knowledge exposed a durable architecture: generic processing can remain open, while domain-specific interpretation can be injected as transformations.
 
 Namespaces make those transformations semantic modules rather than simple procedural hooks. They allow independent vocabularies to coexist and provide explicit mappings between architecture, source code, configuration, databases, and lineage.
 
