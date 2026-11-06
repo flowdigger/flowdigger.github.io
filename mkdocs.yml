@@ -33,6 +33,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Reading Tracks: reading-tracks.md
   - Start Here:
       - Introduction: start-here/index.md
       - Data Lineage in Legacy Systems: core-concepts/data-lineage-basics.md

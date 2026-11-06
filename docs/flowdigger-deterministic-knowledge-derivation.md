@@ -1,40 +1,40 @@
-# Flowdigger: Deterministic Knowledge Derivation from Software Systems
+# Flowdigger: Deterministic Knowledge Derivation, Transformation Injection, and Continuous Architecture Reconciliation
 
 ## Abstract
 
-Legacy software contains more knowledge than its documentation normally records. Architecture models describe intended structure, source code contains implementation structure, configuration connects components, SQL expresses data movement, and build files describe how these parts are assembled. The problem is not simply to collect this material. The problem is to derive a coherent, reproducible interpretation from it.
+Legacy software contains more knowledge than its documentation normally records. Architecture models describe intended structure, source code contains implementation structure, configuration connects components, SQL expresses data movement, and build files describe how these parts are assembled. The problem is not only to collect this material. The problem is to derive a coherent, traceable, and reproducible interpretation from it.
 
-Flowdigger approaches this as **deterministic knowledge derivation**. Authoritative source artifacts remain the source of truth. A staged transformation pipeline parses, observes, relates, validates, merges, stitches, exports, and publishes derived knowledge. The pipeline emerged from a working lineage implementation and was separated from Application-specific knowledge so that the reusable mechanism could be open source while organization-specific interpretation remained outside it.
+[Flowdigger](https://flowdigger.github.io/) approaches this as **deterministic knowledge derivation**. Authoritative source artifacts remain the evidence. A staged pipeline parses, observes, relates, validates, merges, stitches, exports, and publishes derived knowledge. The pipeline originated in a working lineage implementation and was separated from Vortex-specific knowledge so that reusable machinery could become open source while organization-specific interpretation remained private.
 
-A particularly useful property is **transformation injection**: pipeline stages can be enriched with additional transformations. These transformations can introduce or interpret namespaced vocabularies, for example to map application-component metadata in an ArchiMate model to code, configuration, and database artifacts. AI changes the economics of this approach. Copilot can help write and maintain transformation code, while production execution remains deterministic, testable, and auditable.
+A central mechanism is **transformation injection**. Pipeline stages have default behavior, but additional transformations can enrich them with domain-specific interpretation. These transformations can introduce and interpret namespaced vocabularies, for example to map metadata on [ArchiMate](https://www.opengroup.org/archimate-forum/archimate-overview) Application Components to source code, configuration, and database artifacts.
 
-This paper explains the model for managers, developers, and business analysts without requiring prior knowledge of XSLT or compiler construction.
+The approach also supports **Continuous Architecture Reconciliation**. ArchiMate supplies the architectural bootstrap: an explicit statement of intended structure. Flowdigger derives realized structure from implementation evidence and reconciles the two. The same mechanism can be applied to Flowdigger itself, making the ecosystem reflectively self-describing.
 
-## 1. The problem: software knowledge is distributed
+AI changes the economics of the approach. A human and Copilot can create transformations, validations, and tests together, while the production result remains deterministic, versioned, reviewable, and reproducible. AI assists in constructing the interpretation but does not become the operational source of truth.
+
+## 1. Software knowledge is distributed
 
 A running application is rarely described completely in one place. Relevant knowledge can be distributed across:
 
-- architecture models;
-- source code;
-- SQL and stored procedures;
-- configuration;
-- build definitions;
-- deployment conventions;
-- metadata and naming conventions.
+- [ArchiMate](https://www.opengroup.org/archimate-forum/archimate-overview) architecture models;
+- Java, SQL, PL/SQL, and other source languages;
+- application and deployment configuration;
+- stored procedures and database schemas;
+- build definitions and dependency graphs;
+- documents and spreadsheets;
+- naming, packaging, and ownership conventions.
 
-A conventional metadata repository can store a description of the system, but this creates a synchronization problem. The implemented system changes, while manually maintained metadata can lag behind.
+A metadata repository can store a description of the system, but a manually maintained description creates a synchronization problem. The implementation changes while the description can lag behind.
 
 Flowdigger starts from a different principle:
 
-> **The source system remains authoritative. Knowledge is derived from its artifacts reproducibly.**
+> **The implemented system remains authoritative evidence. Knowledge is derived from its artifacts through explicit, versioned rules.**
 
-This does not mean every fact is literally present in one file. Some useful knowledge only becomes visible when facts from multiple artifacts are combined under explicit interpretation rules.
-
-For example, an architecture model can identify an application component, configuration can identify a database schema, Java can identify execution structure, and SQL can identify direct data movement. The relationship between all of these can be derived without asking an AI model to guess it at runtime.
+This does not mean that every useful fact exists literally in one source file. Some knowledge only becomes visible when observations from different artifacts are combined under explicit interpretation rules.
 
 ```mermaid
 flowchart TD
-    A[Architecture] --> D[Deterministic derivation]
+    A[ArchiMate] --> D[Deterministic derivation]
     C[Code] --> D
     F[Configuration] --> D
     S[SQL] --> D
@@ -45,41 +45,49 @@ flowchart TD
     K --> I[Impact analysis]
 ```
 
-## 2. From lineage implementation to reusable pipeline
+For example, an architecture model can identify an Application Component, configuration can identify a database schema, Java can identify execution structure, and SQL can identify data movement. Flowdigger can derive the relationship between them without asking an AI model to infer it whenever the pipeline runs.
 
-The Flowdigger structure did not start as an abstract framework design. It came from a working lineage pipeline. The reusable processing machinery had to be separated from Application-specific implementation knowledge.
+## 2. From a working lineage pipeline to reusable machinery
 
-That extraction exposed a sequence of stable processing stages:
+Flowdigger did not start as an abstract framework design. It came from a working lineage pipeline. The practical requirement was to remove reusable implementation machinery from Vortex without open-sourcing Vortex-specific knowledge.
 
-1. **Parse**: convert source languages into structured syntax artifacts.
-2. **Observe**: identify semantic facts in source, configuration, documents, and models.
-3. **Direct flow**: derive immediate source-operation-target relationships.
-4. **Validate direct flow**: check those local relationships.
-5. **Merge**: combine validated intermediate results.
-6. **Stitch**: connect local relationships into application-level lineage.
-7. **Validate lineage**: check the integrated lineage result.
-8. **Export**: produce representations for downstream consumers.
-9. **Publish**: package and distribute the resulting artifacts.
+That extraction exposed nine stable processing phases:
 
-These stages are not arbitrary workflow boxes. They are transformation boundaries discovered by decomposing an existing implementation.
+1. **Parse** converts source languages into structured syntax artifacts.
+2. **Observe** extracts semantic facts from source, configuration, documents, and models.
+3. **Direct flow** derives immediate source-operation-target relationships.
+4. **Validate direct flow** checks the local flow contracts.
+5. **Merge** combines validated intermediate results and prepares indexes.
+6. **Stitch** connects local relationships into canonical application lineage.
+7. **Validate lineage** checks the integrated result.
+8. **Export** creates representations for downstream consumers.
+9. **Publish** packages and distributes the resulting artifacts.
+
+These are not arbitrary workflow boxes. They are transformation boundaries discovered by decomposing a real implementation.
 
 ```mermaid
-flowchart LR
-    P[Parse] --> O[Observe]
-    O --> D[Direct flow]
-    D --> V1[Validate]
-    V1 --> M[Merge]
-    M --> S[Stitch]
-    S --> V2[Validate]
-    V2 --> E[Export]
-    E --> U[Publish]
+flowchart TD
+    P[1 Parse] --> O[2 Observe]
+    O --> D[3 Direct flow]
+    D --> V1[4 Validate]
+    V1 --> M[5 Merge]
+    M --> S[6 Stitch]
+    S --> V2[7 Validate]
+    V2 --> E[8 Export]
+    E --> U[9 Publish]
 ```
 
-The Gradle lineage plugin acts as an **opinionated orchestrator**. Its purpose is not merely to invoke unrelated tools. It establishes the pipeline structure, connects artifacts between stages, applies defaults, and provides a coherent way to execute the total derivation.
+The [Gradle Lineage Plugin](https://github.com/flowdigger/gradle-lineage-plugin) is the opinionated orchestrator for this lifecycle. Its published contract is:
 
-## 3. Extraction is not enough: knowledge derivation
+```text
+SOURCE -> SYNTAX -> SEMANTICS -> FLOW -> LINEAGE
+```
 
-The term *extraction* is too narrow for the complete process.
+It connects stage inputs and outputs, applies conventions, wires task dependencies, invokes specialized capabilities, and publishes the final artifacts. It is not the only source of semantics. It provides the structure within which deterministic interpretation occurs.
+
+## 3. Extraction, observation, and knowledge derivation
+
+The term **extraction** is too narrow for the complete process.
 
 Extraction exposes something already present:
 
@@ -89,37 +97,45 @@ source contains fact A
 extract fact A
 ```
 
-Knowledge derivation combines evidence with explicit interpretation:
+Observation gives a source fact an explicit structured form:
 
 ```text
-fact A + fact B + interpretation rule R
+source construct A
+        ->
+observation vocabulary describes A
+```
+
+Knowledge derivation combines evidence with interpretation:
+
+```text
+observation A + observation B + rule R
         ->
 derived fact C
 ```
 
-Consider an application component in an architecture model. Its metadata can identify conventions that correspond to Java packages, configuration namespaces, directories, or database objects. Source inspection can independently establish facts about those artifacts. A deterministic mapping can then establish that these implementation artifacts belong to the modeled application component.
+Consider metadata on an ArchiMate Application Component. The metadata can encode conventions corresponding to Java packages, configuration namespaces, directories, or database objects. Source inspection can independently establish facts about those artifacts. A deterministic mapping can then establish that the artifacts realize or participate in the modeled component.
 
-The resulting relation might never have existed as a single statement in the original system. It is nevertheless reproducible because the evidence and the interpretation rule are explicit.
+The resulting relation might never have existed as one statement in the legacy system. It is nevertheless reproducible because its evidence and interpretation rule are explicit.
 
-This makes **knowledge derivation** a better description than projection. Projection usually implies selecting or reshaping information that is already explicitly represented. Flowdigger can establish higher-order knowledge from multiple observations.
+This is why **knowledge derivation** is more precise than **projection**. Projection commonly means selecting or reshaping information already represented. Flowdigger can establish higher-order knowledge by combining multiple observations.
 
 ## 4. Transformation injection
 
-Separating reusable machinery from Application-specific interpretation creates an important requirement: the open pipeline must permit additional domain knowledge without embedding that knowledge in the core.
+Separating reusable machinery from Vortex-specific interpretation creates a requirement: the public pipeline must permit additional domain knowledge without embedding that knowledge in its core.
 
 This leads to **transformation injection**.
 
-A pipeline stage has default deterministic behavior. Additional transformations can participate at a defined stage to enrich the intermediate artifact.
+A pipeline stage has default deterministic behavior. Additional transformations can run at that stage and enrich the intermediate artifact.
 
 ```mermaid
 flowchart TD
-    I[Stage input] --> G[Generic transformation]
+    I[Stage input] --> G[Default transformation]
     G --> X[Injected transformation]
+    R[Domain rules] --> X
     X --> O[Stage output]
-    P[Private or domain rules] --> X
 ```
 
-The mechanism resembles dependency injection, but the injected item is different.
+The idea resembles [dependency injection](https://martinfowler.com/articles/injection.html), but the injected item is different.
 
 Conventional dependency injection supplies an implementation that provides runtime behavior:
 
@@ -127,39 +143,49 @@ Conventional dependency injection supplies an implementation that provides runti
 interface <- implementation
 ```
 
-Transformation injection supplies deterministic interpretation:
+Transformation injection supplies explicit interpretation:
 
 ```text
 artifact <- transformation <- domain knowledge
 ```
 
-This distinction matters. The extension does not have to become part of the Flowdigger codebase. A Application-specific transformation can remain private while operating at a stable public processing boundary.
+A private Vortex transformation can therefore participate at a stable public Flowdigger stage without becoming part of the open-source implementation.
 
-## 5. Namespaces make the extension semantic
+The mechanism can support several composition semantics if they become necessary:
 
-Transformation injection becomes more powerful when transformations can work with namespaced vocabularies.
+- **before** prepares or normalizes the stage input;
+- **enrich** adds knowledge to the default result;
+- **after** derives a downstream representation;
+- **validate** asserts required properties;
+- **replace** substitutes default behavior where explicitly allowed.
 
-Different domains can retain distinct semantic identities, for example:
+The design does not require a new transformation language. [XSLT](https://www.w3.org/TR/xslt-30/) already provides that language. The Gradle DSL only needs to state which transformations participate, at which stage, and in which order.
+
+## 5. Namespaces allow vocabulary injection
+
+Transformation injection becomes more significant when injected transformations introduce or interpret [XML namespaces](https://www.w3.org/TR/xml-names/). A namespace identifies a vocabulary. It permits concepts from different domains to coexist without forcing all concepts into one canonical schema.
+
+For example:
 
 ```text
 flow:*    generic lineage concepts
 archi:*   architecture concepts
-app:*     Application-specific concepts
+vortex:*  Vortex-specific concepts
 ```
 
-The Flowdigger core does not need to understand every private concept. An injected transformation can interpret a private or external vocabulary and produce facts understood by a later stage.
+The Flowdigger core does not need to understand every private concept. A domain transformation can understand the external or private vocabulary and produce facts in the vocabulary expected by a later stage.
 
 ```mermaid
-flowchart LR
-    A[ArchiMate vocabulary] --> T[Domain transformation]
+flowchart TD
+    A[ArchiMate vocabulary] --> T[Domain interpretation]
     V[Private vocabulary] --> T
     T --> F[Flowdigger vocabulary]
     F --> L[Canonical lineage]
 ```
 
-For example, an organization-specific transformation can define how metadata attached to an ArchiMate Application Component identifies code locations, configuration, or database structures. That mapping is executable knowledge.
+An organization-specific transformation can define how metadata attached to an ArchiMate Application Component identifies code locations, configuration, or database structures. The transformation converts a convention into executable knowledge.
 
-This gives a clean separation:
+This yields a clean boundary.
 
 ### Open Flowdigger
 
@@ -167,7 +193,7 @@ This gives a clean separation:
 - generic vocabularies;
 - parsing and observation mechanisms;
 - default transformations;
-- validation;
+- validation and testing;
 - orchestration;
 - export and publication.
 
@@ -180,193 +206,418 @@ This gives a clean separation:
 - interpretation transformations;
 - additional validation rules.
 
-This boundary is more useful than trying to make the generic model understand every application's conventions.
+The injection unit can eventually be treated as a semantic module containing:
+
+- one or more vocabularies;
+- transformations;
+- validation rules;
+- tests;
+- declared input and output contracts.
 
 ## 6. XSLT as executable interpretation
 
-The implementation makes extensive use of XSLT. That choice can appear unusual to developers accustomed to Java, Kotlin, Python, or JavaScript extension APIs.
+The Flowdigger ecosystem makes extensive use of [XSLT 3.0](https://www.w3.org/TR/xslt-30/), [XPath 3.1](https://www.w3.org/TR/xpath-31/), the [XDM data model](https://www.w3.org/TR/xpath-datamodel-31/), and [Schematron](https://schematron.com/). These technologies can appear unfamiliar to developers accustomed to Java, Kotlin, Python, or JavaScript extension APIs.
 
-The relevant property is not XML syntax itself. It is the transformation model:
+The important property is not XML syntax. It is the processing model:
 
-- structured input;
+- structured and namespace-aware input;
 - explicit vocabularies;
-- namespace-aware processing;
 - deterministic transformations;
-- composition of stages;
-- side-effect-free processing;
-- output that can immediately become input to another transformation.
+- composition of small stages;
+- side-effect-free derivation where practical;
+- output that becomes input to another transformation;
+- validations that can be executed and reported.
 
-XSLT therefore acts as **executable interpretation**. It states how evidence expressed in one or more vocabularies becomes new explicit knowledge.
+XSLT acts as **executable interpretation**. It states how evidence expressed in one or more vocabularies becomes new explicit knowledge.
 
-There is a homoiconic quality to the mechanics, although it is not strict Lisp-style homoiconicity. Data, transformation programs, validation rules, and generated artifacts can all use a common structured XML substrate. Transformations can themselves be generated, inspected, tested, versioned, and transformed.
+The [Gradle XML Plugin](https://github.com/flowdigger/gradle-xml-plugin) operationalizes this processing model in Gradle. It provides build tasks for XSLT, XQuery, XSD validation, Schematron, XSpec, and XIR-aware processing.
 
-The practical consequence is more important than the terminology: the system can treat interpretation as an explicit artifact rather than hiding it in application code.
+There is a homoiconic quality to the mechanics, although this is not strict Lisp-style [homoiconicity](https://en.wikipedia.org/wiki/Homoiconicity). Data, transformation programs, validation rules, and generated artifacts can share a structured XML substrate. Transformations can themselves be generated, inspected, versioned, tested, and transformed.
 
-## 7. The role of the Gradle DSL
+The practical consequence is more important than the label: interpretation becomes an explicit artifact instead of hidden behavior inside an application service.
 
-The Gradle DSL provides the opinionated structure around these transformations. It can describe source sets, repositories, models, pipeline configuration, and eventually the transformations that participate in particular stages.
+## 7. The role of XIR
 
-The key separation is:
+[XIR](https://github.com/jurgenei/jurgenei/blob/main/xir-starter-kit/README.md) provides a compact S-expression representation compatible with the XML information model. It reduces serialization noise while preserving namespaces, element structure, attributes, and deterministic processing.
+
+Within Flowdigger, XIR can serve as an intermediate knowledge representation:
+
+```text
+source
+  -> structured syntax
+  -> observations
+  -> derived flow
+  -> stitched lineage
+  -> projections
+```
+
+The value is not that every consumer must adopt XIR. The value is that transformations can operate over an explicit, compact, structured substrate while representations for GraphML, RDF, JSON, or application-specific consumers can be exported later.
+
+Related repositories include:
+
+- [xir-sax](https://github.com/flowdigger/xir-sax), a SAX reader, parser, and serializer for XIR;
+- [xir-g4](https://github.com/flowdigger/xir-g4), which works with ANTLR grammar structure and schema derivation;
+- [gradle-xml-plugin](https://github.com/flowdigger/gradle-xml-plugin), which executes transformations and validations over XML, XIR, and related structured content.
+
+## 8. The Gradle DSL provides composition, not semantics
+
+The Gradle DSL expresses the opinionated structure around the transformation pipeline. It can describe repositories, source sets, architecture models, parser selection, pipeline configuration, and injected transformations.
+
+The responsibilities remain separate:
 
 ```text
 Gradle DSL        -> composition and structure
 XSLT              -> interpretation and transformation
-XIR/artifacts     -> explicit intermediate knowledge
-Schematron/tests  -> assertions and verification
+XIR/XML artifacts -> explicit intermediate knowledge
+Schematron/XSpec  -> assertions and tests
 Gradle tasks      -> deterministic orchestration
 ```
 
-The DSL should not become another transformation language. Its role is to describe **what participates where**.
+This separation supports three audiences:
 
-This is valuable for normal application developers because they should not need to understand the full transformation machinery. A developer can configure and run the pipeline. A metadata or lineage engineer can inspect the generated stages. An extension author can work with the deeper vocabulary and transformation model.
+1. **Application developers** configure and run Flowdigger.
+2. **Lineage and metadata engineers** inspect stages, artifacts, and traceability.
+3. **Extension authors** define domain vocabularies and transformation modules.
 
-## 8. AI changes the economics, not the authority
+Most users should not need to understand transformation injection. They should configure the pipeline and consume its results. The deeper model is necessary only when adding organization-specific interpretation.
 
-Historically, one cost of XSLT-based systems was specialist knowledge. The transformation model is powerful, but many developers are less familiar with XSLT, XPath, XDM, and XML namespaces than with mainstream imperative languages.
+## 9. ArchiMate as the architectural bootstrap
+
+A self-describing system still requires initial semantics. In this architecture, the bootstrap is deliberate: [ArchiMate](https://www.opengroup.org/archimate-forum/archimate-overview) provides the architectural coordinate system.
+
+The ArchiMate model states intended structure, including relevant components, interfaces, services, relationships, and metadata. Flowdigger then derives realized structure from implementation artifacts and maps the evidence back to that architectural model.
+
+```mermaid
+flowchart TD
+    A[ArchiMate intended structure] --> I[Interpretation rules]
+    C[Code and configuration] --> O[Observed structure]
+    Q[SQL and schemas] --> O
+    I --> R[Reconciliation]
+    O --> R
+    R --> K[Architecture-linked knowledge]
+```
+
+ArchiMate is therefore not merely another file to parse. It supplies initial architectural meaning. Application-specific transformation modules explain how those architectural concepts correspond to implementation conventions.
+
+This produces a useful distinction:
+
+- **intended architecture** is asserted in ArchiMate;
+- **realized architecture** is derived from implementation evidence;
+- **reconciliation** compares and connects the two.
+
+## 10. Continuous Architecture Reconciliation
+
+[Continuous Architecture Reconciliation](https://flowdigger.github.io/continuous-architecture-reconcilliation/) is the higher-level practice enabled by the derivation pipeline.
+
+The objective is not to declare either the architecture model or the implementation absolutely primary. They are different observations with different responsibilities:
+
+- architecture expresses intent, boundaries, and rationale;
+- implementation provides evidence of realized structure and behavior;
+- transformations express the mapping between the two;
+- reconciliation exposes agreement, drift, missing mappings, and outdated assumptions.
+
+```mermaid
+flowchart TD
+    A[Intended architecture] --> R[Reconcile]
+    I[Derived implementation] --> R
+    R --> C[Conformance]
+    R --> D[Drift]
+    R --> U[Model update needed]
+    R --> F[Implementation fix needed]
+```
+
+The process can run as part of the build or delivery lifecycle. Architecture conformance then becomes executable instead of depending only on periodic manual review.
+
+This is not one-way enforcement. A difference can mean:
+
+- the implementation violated an intended boundary;
+- the architecture model is stale;
+- an interpretation rule is incomplete;
+- a new domain concept must be modeled;
+- the implementation uses a convention not yet made explicit.
+
+## 11. Reflective self-description
+
+Flowdigger can apply its own derivation machinery to itself:
+
+```text
+Flowdigger ArchiMate model
++ Gradle source and configuration
++ plugin registrations
++ XSLT and Schematron
++ namespaces and vocabularies
+        ->
+Flowdigger pipeline
+        ->
+knowledge about Flowdigger
+```
+
+This is **reflective knowledge derivation**. Flowdigger can derive an explicit model of:
+
+- its plugins and modules;
+- its pipeline phases;
+- which transformations run at each phase;
+- which vocabularies they consume and produce;
+- how artifacts depend on each other;
+- where transformations are injected;
+- which validation rules constrain the stages;
+- how published results trace back to sources and rules.
+
+The result is not absolute self-description. The semantics of Gradle, XSLT, namespaces, and ArchiMate still come from standards and implementations outside the model. The designed ArchiMate bootstrap establishes the initial system semantics.
+
+Within that boundary, Flowdigger can describe its own realized implementation and reconcile it with its intended architecture.
+
+## 12. Dogfooding as an architecture test
+
+Using Flowdigger to describe Flowdigger is a form of [dogfooding](https://en.wikipedia.org/wiki/Eating_your_own_dog_food). In this case, dogfooding is more than internal product use. It is an architecture test.
+
+Self-application tests whether Flowdigger can represent:
+
+- Gradle plugin composition;
+- parsers and language-specific plugins;
+- XSLT and validation assets;
+- transformation injection;
+- namespace and vocabulary dependencies;
+- build and publication structure;
+- traceability to the ArchiMate model.
+
+However, self-description alone is insufficient because it can bias the design toward Flowdigger-shaped systems. Independent examples remain necessary. A Java and Oracle PL/SQL application exercises external applicability, while Flowdigger self-description exercises completeness and internal consistency.
+
+```text
+Flowdigger -> Flowdigger
+    tests reflective completeness
+
+Flowdigger -> independent legacy application
+    tests general applicability
+```
+
+## 13. AI changes the economics, not the authority
+
+Historically, one cost of an XSLT-based system was specialist knowledge. Many developers are less familiar with XSLT, XPath, XDM, Schematron, and namespaces than with mainstream imperative languages.
 
 AI assistance changes this constraint.
 
-The human can define:
+The human supplies:
 
 - semantic intent;
 - vocabulary boundaries;
 - expected mappings;
 - invariants;
-- examples;
-- tests.
+- representative examples;
+- acceptance criteria.
 
 Copilot can assist with:
 
-- implementing XSLT;
-- writing XPath expressions;
+- implementing XSLT and XPath;
 - generating repetitive mappings;
+- writing Schematron constraints;
+- creating XSpec and integration tests;
 - refactoring transformations;
-- writing validation and tests;
-- explaining existing transformation code.
+- explaining existing transformation code;
+- producing documentation from explicit artifacts.
 
-The critical architectural point is that AI does not have to be part of production knowledge derivation.
+The production trust boundary remains deterministic:
 
 ```mermaid
 flowchart TD
-    H[Human semantic intent] --> AI[Human and Copilot implementation]
-    AI --> R[Versioned deterministic rules]
-    S[Authoritative system artifacts] --> E[Deterministic execution]
+    H[Human intent] --> A[Human and Copilot authoring]
+    A --> R[Reviewed versioned rules]
+    S[Authoritative artifacts] --> E[Deterministic execution]
     R --> E
     E --> K[Derived knowledge]
     K --> V[Validation and evidence]
 ```
 
-This preserves a useful boundary:
+> **Humans and AI design the interpretation. Deterministic software executes it.**
 
-> **AI helps construct the specification; deterministic software executes it.**
+This differs materially from using an LLM to inspect a system and generate lineage on demand. The same source artifacts and the same approved rules can produce the same result again.
 
-For audit-sensitive lineage and metadata, this is materially different from asking an AI model to inspect the system repeatedly and generate an answer on demand. The same source artifacts and the same versioned rules can produce the same result again.
+## 14. Responsible and controlled AI use
 
-## 9. What this means for different audiences
+This architecture is a responsible pattern for AI-assisted engineering when AI-generated changes receive the same controls as human-written code.
 
-### For managers
+The relevant controls are:
 
-Flowdigger reduces the need to maintain a second manual description of a changing software system. Investment goes into repeatable derivation rules rather than repeated metadata reconstruction.
+- **Reviewability:** generated XSLT, mappings, and validations are inspectable source code.
+- **Versioning:** Git records exactly when interpretation logic changes.
+- **Testing:** transformations have representative input-output tests and assertions.
+- **Reproducibility:** identical inputs and rule versions produce identical outputs.
+- **Traceability:** derived knowledge can identify source evidence and the responsible transformation.
+- **Rollback:** an incorrect AI-assisted change can be reverted as a software version.
+- **Runtime isolation:** production derivation does not depend on model availability, prompt wording, temperature, or model-version changes.
+- **Accountability:** humans approve the semantics and remain responsible for false or incomplete mappings.
 
-The model also separates reusable engineering from organization-specific intellectual property. Generic processing can be open source while private interpretation stays private.
+Determinism does not make an incorrect rule correct. It makes the error stable, testable, explainable, and repairable. The quality of tests and review therefore remains part of the trust model.
 
-AI can reduce implementation effort without becoming the authority for produced lineage. This distinction is important where explainability, reproducibility, and control matter.
+## 15. A layered trust model
 
-### For developers
+The complete approach implies a trust hierarchy:
 
-Flowdigger treats lineage as a build product. The normal development toolchain can produce knowledge artifacts in the same way it produces binaries, generated sources, reports, or documentation.
+1. **Architecture intent** is stated through ArchiMate and its metadata.
+2. **Authoritative artifacts** provide implementation evidence.
+3. **Explicit deterministic rules** interpret that evidence.
+4. **Intermediate artifacts** make derivation inspectable.
+5. **Validation** checks required properties.
+6. **Reconciliation** compares intended and realized structure.
+7. **Published lineage and metadata** are reproducible outputs.
+8. **AI assistance** improves the rules but remains outside the runtime evidence chain.
 
-Most developers need to understand only the configuration and outputs. Developers implementing extensions need the deeper transformation model.
+The result is not true because Flowdigger or Copilot says so. It is supported under identifiable evidence, explicit interpretations, and executable validations.
 
-This avoids forcing every application to implement a bespoke lineage API while still allowing application-specific semantics where they are necessary.
+## 16. What this means for different audiences
 
-### For business analysts and metadata specialists
+### Managers
 
-Architecture and metadata conventions can become executable instead of remaining prose instructions.
+Flowdigger reduces dependence on a second manually maintained description of a changing system. Investment moves toward reusable derivation rules and automated reconciliation.
 
-A mapping such as "this ArchiMate metadata identifies the implementation boundary of this application component" can be encoded once, tested, and applied consistently whenever the source changes.
+The architecture separates reusable engineering from organization-specific intellectual property. Generic processing can be open source while private interpretation remains private.
 
-This tightens the relationship between architecture, implementation, metadata, and lineage without asserting that any one repository contains the whole truth.
+AI can reduce implementation effort while staying outside the operational evidence chain. This matters where auditability, repeatability, and control are required.
 
-## 10. A layered trust model
+### Developers
 
-The approach implies a useful trust hierarchy:
+Flowdigger treats lineage and architecture-linked metadata as build products. The toolchain can generate knowledge artifacts in the same way it generates binaries, reports, tests, and documentation.
 
-1. **Authoritative artifacts** provide evidence.
-2. **Explicit deterministic rules** interpret that evidence.
-3. **Intermediate artifacts** make derivation inspectable.
-4. **Validation** checks required properties.
-5. **Published lineage and metadata** are reproducible outputs.
-6. **AI assistance** can improve the rules but is outside the runtime evidence chain.
+Most developers need to understand configuration and outputs. Extension authors need the deeper transformation and vocabulary model.
 
-This structure is particularly suitable where generated metadata must be explainable. A lineage relation can be traced to source observations and the transformation rules that established it.
+### Business analysts and metadata specialists
 
-The result is not "true because Flowdigger says so." It is true under identifiable source evidence and explicit interpretation rules.
+Architecture and metadata conventions become executable rather than remaining prose instructions.
 
-## 11. Design consequences
+A rule such as "this ArchiMate property identifies the implementation boundary of this Application Component" can be encoded once, tested, and applied consistently whenever the source changes.
 
-Several practical principles follow from the architecture.
+The resulting knowledge remains connected to both business or architecture terminology and implementation evidence.
 
-### Keep source artifacts authoritative
+### Architects
 
-Do not turn intermediate metadata into an independent source of truth unless there is a specific governance reason to do so. Regenerate derived knowledge when authoritative inputs change.
+The process supplies a continuous comparison between intended and realized architecture. Differences become inspectable findings rather than arguments based on incomplete diagrams or code samples.
+
+### AI governance and assurance specialists
+
+The pattern provides a concrete division between probabilistic assistance and deterministic operational control. AI contributes at design time, while approved software remains the execution authority.
+
+## 17. Flowdigger ecosystem components
+
+The open-source ecosystem separates orchestration, parsing, transformation, document handling, and domain-specific grammar support.
+
+### Core orchestration and transformation
+
+- [gradle-lineage-plugin](https://github.com/flowdigger/gradle-lineage-plugin): opinionated orchestration of the nine-phase lineage pipeline.
+- [gradle-xml-plugin](https://github.com/flowdigger/gradle-xml-plugin): XSLT, XQuery, XSD, Schematron, XSpec, and XIR-aware processing in Gradle.
+- [gradle-archi-plugin](https://github.com/flowdigger/gradle-archi-plugin): headless Archi execution and export of ArchiMate artifacts in automated builds.
+
+### Parsing and observation
+
+- [gradle-antlr-plugin](https://github.com/flowdigger/gradle-antlr-plugin): pluggable ANTLR parsing into XML or XIR syntax artifacts.
+- [gradle-antlr-java-plugin](https://github.com/flowdigger/gradle-antlr-java-plugin): Java language parsing support.
+- [gradle-antlr-plsql-plugin](https://github.com/flowdigger/gradle-antlr-plsql-plugin): Oracle PL/SQL parsing support.
+- [gradle-antlr-tsql-plugin](https://github.com/flowdigger/gradle-antlr-tsql-plugin): Microsoft Transact-SQL parsing support.
+- [gradle-antlr-sas-plugin](https://github.com/flowdigger/gradle-antlr-sas-plugin): SAS language parsing support.
+- [gradle-ooxml-plugin](https://github.com/flowdigger/gradle-ooxml-plugin): conversion of DOCX, PPTX, and XLSX content into simplified structured representations.
+
+### Supporting execution and representation
+
+- [gradle-python-plugin](https://github.com/flowdigger/gradle-python-plugin): controlled Python execution in Gradle tasks with virtual-environment support.
+- [xir-sax](https://github.com/flowdigger/xir-sax): parsing and serialization support for XIR.
+- [xir-g4](https://github.com/flowdigger/xir-g4): structured processing of ANTLR grammar definitions.
+- [Flowdigger organization on GitHub](https://github.com/flowdigger/): current repository inventory.
+
+## 18. Design principles
+
+The combined findings lead to several design principles.
+
+### Keep authoritative artifacts authoritative
+
+Regenerate derived knowledge when source artifacts or approved interpretation rules change. Do not silently turn intermediate metadata into an independent authority.
 
 ### Keep transformation boundaries explicit
 
-The identified stages provide useful contracts for testing, inspection, and extension. Avoid hiding several semantic operations inside one opaque processor.
+The nine stages provide contracts for testing, inspection, caching, extension, and provenance. Avoid opaque processors that combine unrelated semantic operations.
 
 ### Keep domain interpretation outside the generic core
 
-Do not grow the Flowdigger vocabulary whenever one application needs a new convention. Use namespaced vocabularies and transformations to translate domain knowledge into generic lineage concepts where appropriate.
+Do not expand the generic vocabulary for every application convention. Use namespaced vocabularies and domain transformations.
 
-### Prefer small transformation injection over a large extension framework
+### Keep the DSL focused on composition
 
-The current need is to attach additional deterministic interpretation to existing stages. XSLT already supplies the transformation language. The Gradle DSL only needs enough structure to compose those transformations clearly.
+The Gradle DSL should express sources, stages, transformation modules, order, and outputs. XSLT remains the language for interpretation.
 
-### Make generated knowledge reviewable
+### Make provenance a first-class output
 
-AI-generated transformation code must remain ordinary version-controlled code with tests and deterministic execution. AI generation does not remove the need for reviewable semantics.
+A derived relation should identify the source observations, transformations, and validation path that established it.
 
-## 12. Broader interpretation
+### Use self-description as a test, not as the only use case
 
-Flowdigger started from lineage, but the pattern is broader.
+Flowdigger should reconcile itself, but independent legacy-system examples must test generality.
 
-A software system contains latent knowledge in its structure. When that knowledge can be observed and interpreted through explicit rules, the same machinery can support:
+### Keep AI outside the runtime authority boundary
 
-- lineage;
+Use AI to create deterministic infrastructure and interpretation rules. Do not make probabilistic answers the authoritative lineage record.
+
+## 19. Broader interpretation
+
+Flowdigger started from lineage, but the pattern is broader. A software system contains latent knowledge in its structure. When that knowledge can be observed and interpreted through explicit rules, the same machinery can support:
+
+- data and control-flow lineage;
 - impact analysis;
 - architecture conformance;
 - metadata production;
 - dependency analysis;
 - application-component mapping;
 - comparison between environments or versions;
-- evidence for modernization and migration work.
+- migration and modernization evidence;
+- generated documentation;
+- self-description of the derivation system itself.
 
-This suggests three useful terms with distinct meanings:
+Three terms have distinct roles:
 
-**Knowledge archaeology** is the activity of discovering the knowledge embedded in existing systems.
+**Knowledge archaeology** is the activity of discovering knowledge embedded in existing systems.
 
 **Knowledge derivation** is the deterministic mechanism that turns evidence and interpretation rules into explicit knowledge.
 
-**Flowdigger** is machinery for making that process executable, reproducible, and composable.
+**Continuous Architecture Reconciliation** is the practice of repeatedly comparing intended architecture with the structure derived from implementation.
+
+**Flowdigger** is the machinery that makes these activities executable, reproducible, extensible, and reviewable.
 
 ## Conclusion
 
 Flowdigger is best understood not as a metadata repository and not merely as a collection of Gradle plugins. It is an **opinionated deterministic knowledge-derivation pipeline for software systems**.
 
-Its processing stages emerged from a working lineage implementation. Separating that machinery from Application-specific knowledge exposed a useful architectural boundary: generic processing can remain open, while domain-specific interpretation can be injected as transformations.
+Its stages emerged from a working lineage implementation. Separating reusable machinery from Vortex-specific knowledge exposed a durable architecture: generic processing can remain open, while domain-specific interpretation can be injected as transformations.
 
-Namespaces make those transformations more than procedural hooks. They allow independent vocabularies to coexist and allow explicit rules to translate between architecture, code, configuration, database, and lineage concepts.
+Namespaces make those transformations semantic modules rather than simple procedural hooks. They allow independent vocabularies to coexist and provide explicit mappings between architecture, source code, configuration, databases, and lineage.
 
-AI then occupies a controlled role. Copilot can work with humans to create, explain, and maintain the transformations, while the resulting knowledge is still produced by deterministic software from authoritative artifacts.
+ArchiMate supplies the bootstrap for intended architecture. Flowdigger derives realized structure from evidence. Continuous Architecture Reconciliation connects the two. Applying the same process to Flowdigger itself creates a reflective self-description and a demanding dogfooding test.
 
-The resulting model is deliberately asymmetric:
+Copilot can participate heavily in creating and maintaining this ecosystem without becoming the runtime authority. The resulting control model is deliberately asymmetric:
 
 ```text
 Humans + AI design the interpretation.
+Reviewed code records the interpretation.
 Deterministic software executes the interpretation.
 Source artifacts remain the evidence.
 Derived knowledge remains reproducible.
 ```
 
-That separation is the central property of the ecosystem. It makes sophisticated interpretation compatible with automation without making probabilistic AI the operational source of truth.
+That separation is the central property of the ecosystem. It permits sophisticated AI-assisted engineering without making probabilistic AI the operational source of truth.
+
+## Further reading
+
+### Flowdigger
+
+- [Flowdigger documentation](https://flowdigger.github.io/)
+- [Continuous Architecture Reconciliation](https://flowdigger.github.io/continuous-architecture-reconcilliation/)
+- [Flowdigger repositories](https://github.com/flowdigger/)
+- [Gradle Lineage Plugin](https://github.com/flowdigger/gradle-lineage-plugin)
+- [Gradle XML Plugin](https://github.com/flowdigger/gradle-xml-plugin)
+- [XIR starter kit](https://github.com/jurgenei/jurgenei/blob/main/xir-starter-kit/README.md)
+
+### Standards and concepts
+
+- [ArchiMate overview, The Open Group](https://www.opengroup.org/archimate-forum/archimate-overview)
+- [XSLT 3.0, W3C Recommendation](https://www.w3.org/TR/xslt-30/)
+- [XPath 3.1, W3C Recommendation](https://www.w3.org/TR/xpath-31/)
+- [XDM 3.1, W3C Recommendation](https://www.w3.org/TR/xpath-datamodel-31/)
+- [Namespaces in XML, W3C Recommendation](https://www.w3.org/TR/xml-names/)
+- [Schematron](https://schematron.com/)
+- [Dependency Injection, Martin Fowler](https://martinfowler.com/articles/injection.html)
