@@ -46,5 +46,6 @@ Partly realized:
 
 ## Related decisions
 
+- Reader introduction: [Provenance](../learn/system-knowledge/provenance.md).
 - [ADR-0002](0002-common-structural-representation.md), [ADR-0008](0008-derive-from-evidence-without-inference.md), [ADR-0012](0012-separate-canonical-knowledge-from-projections.md)
 - Historical: H-000, H-020 (see [Historical decision records](history.md))

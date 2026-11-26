@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Describe standard lifecycle for lineage derivation.
+Describe the conceptual lifecycle for lineage derivation. For components and implementation status, see the [architecture map](../lineage/index.md).
 
 ## Steps
 
@@ -38,7 +38,7 @@ Merge combines results of the same kind and adds no new relations. Stitch adds r
 
 ## Output
 
-You get repeatable lineage production process.
+The lifecycle is a model of repeatable production, not a fully runnable example. See [implementation status](../lineage/index.md#implementation-status).
 
 ## Related
 

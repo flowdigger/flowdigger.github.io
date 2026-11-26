@@ -1,6 +1,9 @@
 # Extract, Derive, Resolve, Publish
 ## A Story About Structure, Understanding, and the Reuse of Knowledge
 
+!!! note "Research perspective"
+    This paper retains its broader historical perspective. For current Flowdigger guidance see [deterministic knowledge derivation](flowdigger-deterministic-knowledge-derivation.md) and [implementation status](lineage/index.md#implementation-status).
+
 > **See also:** [XIR Positioning Note for W3C Communities](XIR_W3C_Positioning_Note.md) for how these concepts fit into the broader XIR framework and W3C standards ecosystem.
 
 ### Introduction

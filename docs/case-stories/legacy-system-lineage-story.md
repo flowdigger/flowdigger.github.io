@@ -1,5 +1,8 @@
 # Legacy System Lineage Story
 
+!!! note "Illustrative scenario"
+    This describes a target workflow, not a verified runnable example. See [implementation status](../lineage/index.md#implementation-status).
+
 ## Purpose
 
 Show practical use of lineage method in one legacy domain.
@@ -16,7 +19,7 @@ Team must explain how risk report field is calculated across old ETL and databas
 4. Validate with business analyst and engineer.
 5. Publish result for change and control workflows.
 
-## Result
+## Intended result {#result}
 
 - Faster impact analysis
 - Less ambiguity during change reviews

@@ -1,5 +1,8 @@
 # Validate Lineage Quality
 
+!!! warning "Under construction"
+    Examples are not yet fully runnable. These are review criteria, not verified execution instructions.
+
 ## Purpose
 
 Check if lineage output is complete, consistent, and actionable.
@@ -11,7 +14,7 @@ Developers, analysts, and managers.
 ## Quality checks
 
 1. **Coverage**: key source and target elements appear in lineage graph.
-2. **Traceability**: each derived fact links to source evidence.
+2. **Traceability**: check available source evidence and record missing links. End-to-end provenance is not implemented ([ADR-0011](../adr/0011-preserve-provenance.md)).
 3. **Consistency**: repeated derivation run gives same result.
 4. **Reviewability**: business user can follow path without hidden jumps.
 
@@ -26,5 +29,5 @@ The pipeline runs Schematron gates after direct-flow derivation and after stitch
 
 ## Output
 
-Clear pass/fail result with explicit gap list.
+A review checklist and explicit gap list; results depend on available evidence and implementation coverage.
 

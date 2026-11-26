@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Show how Flowdigger derives lineage from real system evidence.
+Show the pipeline and its implementation status. For the conceptual lifecycle, see [Derivation lifecycle](../core-concepts/derivation-lifecycle.md).
 
 ## Audience
 
@@ -13,6 +13,8 @@ Developers, business analysts, managers, and learners.
 Do not maintain lineage by hand when system facts can be derived from code, configuration, and runtime signals.
 
 ## End-to-end flow
+
+This is a conceptual view, not a claim that every source or provenance path is implemented.
 
 ```mermaid
 flowchart TD
@@ -30,6 +32,13 @@ flowchart TD
 - Need design rationale: read [Architecture Decision Records](../adr/index.md).
 
 The diagram above is a simplified view. The implementation uses nine phases; see [ADR-0007](../adr/0007-explicit-pipeline-phases.md).
+
+## Implementation status
+
+- **Implemented:** the lineage plugin organizes processing into nine phases, including validation, merge, stitch and export. See [ADR-0007](../adr/0007-explicit-pipeline-phases.md) and [ADR-0012](../adr/0012-separate-canonical-knowledge-from-projections.md).
+- **Partial:** source coverage varies and provenance is carried through merge but is incomplete after stitch.
+- **Proposed:** end-to-end provenance. No PROV-O mapping is implemented. See [ADR-0011](../adr/0011-preserve-provenance.md).
+- **Under construction:** examples are not yet fully runnable; see [example guidance](../how-to/build-first-lineage-slice.md).
 
 ## Related
 

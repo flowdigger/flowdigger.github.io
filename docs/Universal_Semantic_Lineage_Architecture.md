@@ -1,5 +1,8 @@
 # Universal Semantic Lineage Architecture
 
+!!! note "Research perspective"
+    This paper explores a broader proposed semantic and AI architecture, not a statement of current Flowdigger capabilities. For current guidance see [Flowdigger deterministic knowledge derivation](flowdigger-deterministic-knowledge-derivation.md) and [implementation status](lineage/index.md#implementation-status).
+
 > **See also:** [XIR Positioning Note for W3C Communities](XIR_W3C_Positioning_Note.md) for how this lineage architecture relates to XIR's role in providing common semantic substrate across standards.
 
 ## 1. Introduction: Better Reasoning, Lower Cost, Reproducibility, and ESG
