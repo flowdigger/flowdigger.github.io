@@ -1,5 +1,8 @@
 # Flowdigger: Deterministic Knowledge Derivation, Transformation Injection, and Continuous Architecture Reconciliation
 
+!!! note "Scope and maturity"
+    This paper provides the broad Flowdigger perspective. For current implementation and limitations, see the [architecture map](lineage/index.md#implementation-status). Examples are under construction; end-to-end provenance and PROV-O mapping are not implemented.
+
 ## Abstract
 
 Legacy software contains more knowledge than its documentation normally records. Architecture models describe intended structure, source code contains implementation structure, configuration connects components, SQL expresses data movement, and build files describe how these parts are assembled. The problem is not only to collect this material. The problem is to derive a coherent, traceable, and reproducible interpretation from it.

@@ -1,8 +1,11 @@
 # Build First Lineage Slice
 
+!!! warning "Under construction"
+    Examples are not yet fully runnable. This page outlines an intended exercise, not verified setup or execution instructions.
+
 ## Purpose
 
-Produce first useful lineage result from one legacy flow.
+Explore one bounded process or report flow with source SQL or transformation code and known table and field names.
 
 ## Audience
 
@@ -10,24 +13,23 @@ Developers and technical analysts.
 
 ## Inputs
 
-- One bounded process or report flow
-- Source SQL or transformation code
-- Table and field names
+A bounded process, its source artifacts, and known table and field names.
 
 ## Steps
 
 1. Select one start table and one target report field.
 2. Collect transformation artifacts between source and target.
-3. Normalize artifacts into one intermediate representation.
-4. Derive lineage links at table and field level.
-5. Record provenance for each derived link.
-6. Publish one lineage view and review with domain owner.
+3. Examine how observations, direct flows, merge and stitch relate to those artifacts in the [pipeline](../adr/0007-explicit-pipeline-phases.md).
+4. Review available evidence and document missing links with a domain owner.
+
+## Setup, configuration and troubleshooting
+
+Verified end-to-end setup and troubleshooting instructions are not available yet. The [lineage plugin](https://github.com/flowdigger/gradle-lineage-plugin) documents its current profiles and extension points. Check source coverage and open issues there before relying on an example; avoid assuming a particular command or configuration works.
 
 ## Output
 
-One validated lineage slice with traceable provenance.
+A scoped exercise and a list of evidence gaps, not a guaranteed lineage result. End-to-end provenance is not implemented; see [ADR-0011](../adr/0011-preserve-provenance.md).
 
 ## Next
 
-Run [Validate lineage quality](validate-lineage-quality.md).
-
+Review [lineage quality criteria](validate-lineage-quality.md).

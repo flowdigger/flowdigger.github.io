@@ -33,23 +33,52 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Reading Tracks: reading-tracks.md
   - Start Here:
       - Introduction: start-here/index.md
+      - Reading tracks: reading-tracks.md
+      - Developer path: role-paths/developer.md
+      - Business analyst and data steward path: role-paths/business-analyst.md
+      - IT manager path: role-paths/manager.md
+      - Learner path: role-paths/learner.md
+  - Learn:
       - Data Lineage in Legacy Systems: core-concepts/data-lineage-basics.md
       - Storyline and Learning Path: core-concepts/storyline.md
-  - Role Paths:
-      - Developer path: role-paths/developer.md
-      - Business analyst path: role-paths/business-analyst.md
-      - Manager path: role-paths/manager.md
-      - Learner path: role-paths/learner.md
-  - How-To Playbooks:
-      - Build first lineage slice: how-to/build-first-lineage-slice.md
-      - Validate lineage quality: how-to/validate-lineage-quality.md
-  - Core Concepts:
       - Evidence model: core-concepts/evidence-model.md
       - Derivation lifecycle: core-concepts/derivation-lifecycle.md
+      - LinkedIn series:
+          - Overview: learn/system-knowledge/index.md
+          - Knowledge reconstruction: learn/system-knowledge/knowledge-reconstruction.md
+          - Technical evidence: learn/system-knowledge/technical-evidence.md
+          - Reproducibility: learn/system-knowledge/reproducibility.md
+          - Common representation: learn/system-knowledge/common-representation.md
+          - Transformation: learn/system-knowledge/transformation.md
+          - Merge: learn/system-knowledge/merge.md
+          - Stitch: learn/system-knowledge/stitch.md
+          - Provenance: learn/system-knowledge/provenance.md
+          - Projections: learn/system-knowledge/projections.md
+  - Try and use:
+      - Build first lineage slice: how-to/build-first-lineage-slice.md
+      - Validate lineage quality: how-to/validate-lineage-quality.md
+      - Illustrative case story: case-stories/legacy-system-lineage-story.md
+  - Architecture:
       - Lineage architecture map: lineage/index.md
+      - Decision overview: adr/index.md
+      - "0001 Established standards": adr/0001-prefer-established-standards.md
+      - "0002 Common structural representation": adr/0002-common-structural-representation.md
+      - "0003 Functional transformations": adr/0003-functional-transformations.md
+      - "0004 Shared XSLT substrate": adr/0004-shared-xslt-substrate.md
+      - "0005 Validate at boundaries": adr/0005-validate-at-transformation-boundaries.md
+      - "0006 Reconstruction as build": adr/0006-knowledge-reconstruction-as-build.md
+      - "0007 Nine pipeline phases": adr/0007-explicit-pipeline-phases.md
+      - "0008 Evidence only, no inference": adr/0008-derive-from-evidence-without-inference.md
+      - "0009 Replaceable source adapters": adr/0009-replaceable-source-adapters.md
+      - "0010 Architecture models as evidence": adr/0010-architecture-models-as-evidence.md
+      - "0011 Preserve provenance": adr/0011-preserve-provenance.md
+      - "0012 Canonical knowledge vs projections": adr/0012-separate-canonical-knowledge-from-projections.md
+      - "0013 Saxon-HE baseline": adr/0013-saxon-he-baseline.md
+      - Historical decision records: adr/history.md
+      - Reconstruction report: adr/reconstruction-report.md
+      - ADR template: adr/template.md
   - Reference:
       - Glossary and acronyms: reference/glossary.md
       - Migration map: lineage/migration-map.md
@@ -64,6 +93,9 @@ nav:
           - XIR W3C Positioning (Merged): XIR_W3C_Merged_Paper.md
           - XIR W3C Positioning (Draft): XIR_W3C_Positioning_Note.md
           - XIR 30-Year Journey: XIR-30-year-journey.md
+  - Community:
+      - Contact: community/index.md
+  - Research:
       - Source papers:
           - Universal Semantic Lineage Architecture: Universal_Semantic_Lineage_Architecture.md
           - Continuous Architecture Reconciliation: continuous-architecture-reconcilliation.md
@@ -85,5 +117,3 @@ nav:
           - 02 - Metadata as Build Product: xir-metadata-lineage-papers/02-metadata-as-a-build-product.md
           - 03 - Lineage to Reprojection: xir-metadata-lineage-papers/03-from-lineage-to-reprojection.md
           - 04 - Metadata Workbench DTAP: xir-metadata-lineage-papers/04-fast-metadata-workbench-dtap-analysis.md
-  - Case Stories:
-      - Legacy system lineage story: case-stories/legacy-system-lineage-story.md
