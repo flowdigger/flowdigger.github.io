@@ -50,6 +50,24 @@ nav:
       - Evidence model: core-concepts/evidence-model.md
       - Derivation lifecycle: core-concepts/derivation-lifecycle.md
       - Lineage architecture map: lineage/index.md
+  - Architecture Decisions:
+      - Overview: adr/index.md
+      - "0001 Established standards": adr/0001-prefer-established-standards.md
+      - "0002 Common structural representation": adr/0002-common-structural-representation.md
+      - "0003 Functional transformations": adr/0003-functional-transformations.md
+      - "0004 Shared XSLT substrate": adr/0004-shared-xslt-substrate.md
+      - "0005 Validate at boundaries": adr/0005-validate-at-transformation-boundaries.md
+      - "0006 Reconstruction as build": adr/0006-knowledge-reconstruction-as-build.md
+      - "0007 Nine pipeline phases": adr/0007-explicit-pipeline-phases.md
+      - "0008 Evidence only, no inference": adr/0008-derive-from-evidence-without-inference.md
+      - "0009 Replaceable source adapters": adr/0009-replaceable-source-adapters.md
+      - "0010 Architecture models as evidence": adr/0010-architecture-models-as-evidence.md
+      - "0011 Preserve provenance": adr/0011-preserve-provenance.md
+      - "0012 Canonical knowledge vs projections": adr/0012-separate-canonical-knowledge-from-projections.md
+      - "0013 Saxon-HE baseline": adr/0013-saxon-he-baseline.md
+      - Historical decision records: adr/history.md
+      - Reconstruction report: adr/reconstruction-report.md
+      - ADR template: adr/template.md
   - Reference:
       - Glossary and acronyms: reference/glossary.md
       - Migration map: lineage/migration-map.md

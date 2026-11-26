@@ -15,6 +15,7 @@ Use guided track by role or by immediate goal.
 - Build first result: [Build first lineage slice](how-to/build-first-lineage-slice.md).
 - Check quality: [Validate lineage quality](how-to/validate-lineage-quality.md).
 - Understand method: [Derivation lifecycle](core-concepts/derivation-lifecycle.md).
+- Understand design decisions: [Architecture Decision Records](adr/index.md).
 
 ## Reading model
 

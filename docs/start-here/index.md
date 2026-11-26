@@ -31,6 +31,8 @@ flowchart TD
 3. Pick your [Role path](../role-paths/developer.md).
 4. Execute [Build first lineage slice](../how-to/build-first-lineage-slice.md).
 
+Want to know why Flowdigger works this way? Read the [Architecture Decision Records](../adr/index.md).
+
 ## Output
 
 You know where to start and what to do next.

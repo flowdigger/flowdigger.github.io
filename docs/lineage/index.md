@@ -27,6 +27,9 @@ flowchart TD
 - Need architecture detail: read [Universal Semantic Lineage Architecture](../Universal_Semantic_Lineage_Architecture.md).
 - Need reconciliation detail: read [Continuous Architecture Reconciliation](../continuous-architecture-reconcilliation.md).
 - Need lifecycle detail: read [Derivation lifecycle](../core-concepts/derivation-lifecycle.md).
+- Need design rationale: read [Architecture Decision Records](../adr/index.md).
+
+The diagram above is a simplified view. The implementation uses nine phases; see [ADR-0007](../adr/0007-explicit-pipeline-phases.md).
 
 ## Related
 

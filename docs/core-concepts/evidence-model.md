@@ -20,6 +20,9 @@ Developers and analysts. Managers can use summary section.
 2. Keep derivation functions deterministic.
 3. Keep provenance link from derived fact to source evidence.
 4. Keep confidence level explicit.
+5. Keep gaps visible. Do not fill missing relations with guesses.
+
+Design decisions behind these rules: [ADR-0008](../adr/0008-derive-from-evidence-without-inference.md), [ADR-0010](../adr/0010-architecture-models-as-evidence.md), [ADR-0011](../adr/0011-preserve-provenance.md).
 
 ## Compact model
 

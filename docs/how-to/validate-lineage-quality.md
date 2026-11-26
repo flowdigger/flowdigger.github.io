@@ -15,6 +15,8 @@ Developers, analysts, and managers.
 3. **Consistency**: repeated derivation run gives same result.
 4. **Reviewability**: business user can follow path without hidden jumps.
 
+The pipeline runs Schematron gates after direct-flow derivation and after stitching. See [ADR-0005](../adr/0005-validate-at-transformation-boundaries.md).
+
 ## Lightweight acceptance checklist
 
 - All critical fields mapped

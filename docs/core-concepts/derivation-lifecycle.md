@@ -22,11 +22,28 @@ flowchart TD
     D --> E[Publish]
 ```
 
+## Mapping to pipeline phases
+
+The five steps are a simplified view. The [Gradle Lineage Plugin](https://github.com/flowdigger/gradle-lineage-plugin) implements them as nine phases ([ADR-0007](../adr/0007-explicit-pipeline-phases.md)):
+
+| Lifecycle step | Pipeline phases |
+|---|---|
+| Extract | 1 parse |
+| Normalize | 2 observe |
+| Derive | 3 direct flow, 5 merge, 6 stitch |
+| Validate | 4 validate direct flow, 7 validate lineage |
+| Publish | 8 export, 9 publish |
+
+Merge combines results of the same kind and adds no new relations. Stitch adds relations across components, only from explicit declarations.
+
 ## Output
 
 You get repeatable lineage production process.
 
 ## Related
+
+- [ADR-0003: Functional transformations](../adr/0003-functional-transformations.md)
+- [ADR-0007: Nine pipeline phases](../adr/0007-explicit-pipeline-phases.md)
 
 - [Build first lineage slice](../how-to/build-first-lineage-slice.md)
 - [Validate lineage quality](../how-to/validate-lineage-quality.md)

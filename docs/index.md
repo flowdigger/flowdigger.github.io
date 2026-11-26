@@ -29,6 +29,7 @@ ArchiMate captures intended architecture. Flowdigger derives realized structure 
 - **Validate output quality:** [Validate lineage quality](how-to/validate-lineage-quality.md)
 - **Choose guided path:** [Reading tracks](reading-tracks.md)
 - **Deep dive architecture:** [Flowdigger deterministic knowledge derivation](flowdigger-deterministic-knowledge-derivation.md)
+- **Design decisions:** [Architecture Decision Records](adr/index.md)
 
 ## Ecosystem at glance
 
